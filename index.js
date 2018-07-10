@@ -1,5 +1,11 @@
+const readline = require('readline-sync');
+
 function main() {
-    for (let x = 1; x < 301; x++) {
+    printWelcome();
+    console.log("Please enter a maximum number:");
+    let maxNum = inputInt();
+
+    for (let x = 1; x < (maxNum + 1); x++) {
         let multiString = "";
         if (isThree(x)) {
             multiString = multiString.concat("Fizz");
@@ -68,5 +74,29 @@ function reverseString(multiString) {
     }
     multiString = tempArr.join("");
     return multiString;
+}
+
+function inputInt(){
+    let x = 0;
+    let isInt = 0;
+    do {
+        const input = readline.prompt();
+        isInt = parseInt(input);
+        if (isNaN(isInt)){
+            console.log("Please enter a valid input (MUST BE INTEGER).")
+            continue;
+        }
+        else{
+            x = 1;
+        }
+
+    }while (x===0);
+
+    return isInt;
+}
+
+function printWelcome(){
+    console.log('Welcome to FizzBuzz');
+    console.log('-------------------');
 }
 main();
